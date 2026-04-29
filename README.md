@@ -165,7 +165,7 @@ git remote -v
 
 Para subir tus avances usas git push, que básicamente es "empujar" tus commits al servidor origin, directo a la rama en la que estás trabajando. En cambio, cuando necesitas bajar las actualizaciones que otros subieron, usas git pull para traerte esos cambios desde el servidor hacia tu propia compu. Es la forma sencilla de mantener sincronizado lo que tienes tú con lo que está guardado en GitHub para que nada se pierda.
 
-### REMOTE.SHH MULTIPLE Y CHECKOUT
+### CLASE 4 REMOTE.SHH MULTIPLE Y CHECKOUT
 
 Git Remote es el comando que sirve para gestionar las conexiones entre tu proyecto local y los repositorios en la nube, básicamente le dice a Git hacia dónde debe apuntar para enviar o recibir archivos.
 
@@ -180,12 +180,12 @@ Git Remote Set-url es el que utilizas cuando necesitas cambiar o actualizar la d
 Lo ideal es tener múltiples llaves SSH para que cada una funcione como un acceso independiente y no haya conflictos entre ellas. Es como tener una llave distinta para cada puerta: te da mucha más seguridad y orden, ya que cada cuenta tiene su propio "túnel" privado para conectar tu compu con el servidor.
 
 ### CONFIGURACIONES LOCALES
+
 Las configuraciones locales son las que mandan sobre todas las demás, pero solo funcionan dentro del repositorio donde las activas. Básicamente, sirven para que un proyecto específico tenga sus propios datos sin mover nada de tu configuración general.
 
 Para hacerlo, usas los comandos de nombre y correo pero quitando el flag --global. Así, Git entiende que esos cambios son solo para esa carpeta. En la pirámide de prioridades, lo local siempre está por encima de lo global y lo del sistema, así que es la clave para personalizar cada entrega por separado.
 
 ### GIT CHECKOUT
-
 
 El comando git checkout es básicamente tu máquina del tiempo en Git; sirve para mover el "lector" (el HEAD) hacia cualquier punto de la historia o para saltar entre ramas.
 
@@ -200,3 +200,64 @@ Lo más importante es que, si haces cambios en este estado y regresas al present
 ### COMO VOLVER A UN COMMIT
 
 Para viajar al pasado usas git checkout seguido del código (hash) de ese commit; para regresar al presente, simplemente haces git checkout al nombre de tu rama (como main). Ten cuidado: si haces cambios en el pasado, estos desaparecerán a menos que crees una rama nueva ahí mismo con git checkout -b.
+
+## CLASE 5 (RAMAS Y GITFLOW BASICO)
+
+### ¿QUE SON LAS RAMAS?
+
+Las ramas en Git son como caminos separados del mismo proyecto. Permiten trabajar en cambios o nuevas funciones sin afectar el código principal, y luego unir esos cambios cuando estén listos. Son útiles para organizar y controlar mejor el desarrollo del código.
+
+Git Branch es un comando que permite administrar las ramas de un proyecto.
+
+git branch → Muestra las ramas existentes y en cuál estás trabajando.
+
+git branch nombre-rama → Crea una nueva rama.
+
+git branch -D nombre-rama → Elimina una rama.
+
+### GIT CHECKOUT ENFOCADO EN RAMAS
+
+Git Checkout también sirve para trabajar con ramas:
+
+git checkout nombre-rama → Cambia a otra rama.
+
+git checkout -b nombre-rama → Crea una nueva rama y te mueve a ella de inmediato.
+
+### Git Checkout vs Git Switch
+
+Ambos sirven para cambiar de ramas, pero git checkout es un comando más completo y antiguo: permite cambiar ramas, ir a commits pasados y restaurar archivos.
+
+git switch es más nuevo (desde 2019) y está enfocado solo en manejar ramas, siendo más simple y evitando errores como Detached HEAD.
+
+### GITFLOW BASICO
+
+Gitflow Básico es una forma organizada de trabajar con ramas en Git. Usa reglas para manejar cambios, versiones y desarrollo en equipo, facilitando el orden del proyecto y la colaboración entre varias personas.
+
+### ¿COMO FUNCIONA GITFLOW?
+
+Main → Rama principal que contiene el código estable o en producción.
+
+Develop → Rama donde se integran y prueban nuevas funciones antes de pasar a producción.
+
+Ramas de apoyo → Ramas para trabajar cambios específicos:
+
+Feature: nuevas funciones.
+
+Release: preparación de nuevas versiones.
+
+Hotfix: correcciones urgentes en producción.
+
+### RAMAS DE APOYO
+
+eature → Se usan para desarrollar nuevas funciones del proyecto. Nacen desde develop, luego se integran ahí y se eliminan.
+Ejemplo: feature/login, feature/new-form-user.
+
+
+Release → Se usan para preparar una nueva versión, hacer pruebas y dejar todo listo para producción. Se crean desde develop y luego se fusionan con main y develop.
+Ejemplo: release/v1.0.0.
+
+
+Hotfix → Sirven para corregir errores urgentes en producción. Se crean desde main y luego se fusionan con main y develop.
+Ejemplo: hotfix/security-patch.
+
+
