@@ -260,4 +260,37 @@ Ejemplo: release/v1.0.0.
 Hotfix → Sirven para corregir errores urgentes en producción. Se crean desde main y luego se fusionan con main y develop.
 Ejemplo: hotfix/security-patch.
 
+## CLASE 6
+
+### Git merge
+
+Es básicamente unir ramas. Sirve para combinar los cambios de una rama con otra, por ejemplo llevar lo que hiciste en tu rama a develop.
+
+El --no-ff se usa para que Git no “simplifique” la unión y así quede registrado el merge como un commit aparte, manteniendo mejor el historial.
+
+### Git fetch
+
+Este comando revisa si hay cambios en el repositorio remoto, pero no los descarga a tu código todavía. Solo actualiza la info para que sepas si hay algo nuevo.
+
+### Git pull
+
+Aquí sí traes los cambios del repositorio remoto a tu proyecto. Es como hacer un fetch + merge en un solo paso.
+
+### Git push
+
+Sirve para subir tus cambios al repositorio remoto.
+
+Cuando subes una rama por primera vez, usas -u para que Git la reconozca y no tengas que especificarla siempre.
+
+
+### Flujo de trabajo sencillo (sin Pull Request)
+
+1. Te cambias a develop y lo actualizas (fetch + pull).
+2. Vuelves a tu rama y haces merge de develop (solo si hubo cambios).
+3. Trabajas normalmente en tu rama.
+4. Subes tus cambios con push (con -u si es la primera vez).
+5. Regresas a develop, lo actualizas otra vez.
+6. Haces merge --no-ff de tu rama hacia develop.
+7. Si hay conflictos, los arreglas manualmente y haces commit.
+8. Borras tu rama y subes develop actualizado.
 
