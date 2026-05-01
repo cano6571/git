@@ -294,3 +294,56 @@ Cuando subes una rama por primera vez, usas -u para que Git la reconozca y no te
 7. Si hay conflictos, los arreglas manualmente y haces commit.
 8. Borras tu rama y subes develop actualizado.
 
+## CLASE 7
+
+### ¿Qué son los Pull Request (PR)?
+
+Son una forma más ordenada y profesional de trabajar en equipo con Git. Básicamente, cuando terminas tu trabajo en una rama, en vez de unirlo directo, haces un PR para avisar: “quiero agregar estos cambios”.
+
+Ahí los demás pueden revisar tu código antes de aceptarlo.
+
+### ¿Cómo crear un PR?
+
+Primero haces git push origin rama para subir tu trabajo.
+
+Después vas a GitHub y desde ahí creas el Pull Request, comparando tu rama con develop (o la principal).
+
+Ahí puedes poner descripción, comentarios y todo eso.
+
+### Flujo de trabajo con PR
+
+1. Actualizas develop (fetch + pull).
+
+2. Creas o entras a tu rama.
+
+3. Traes cambios de develop a tu rama (si hay).
+
+4. Trabajas normal.
+
+5. Subes tu rama (push).
+
+6. Antes del PR, vuelves a sincronizar con develop para evitar conflictos.
+
+7. Arreglas conflictos si aparecen y vuelves a subir.
+
+8. Creas el PR en GitHub.
+
+### ¿Por qué usar PR si puedes hacer merge directo?
+
+* Porque así no cualquiera mete cambios sin control.
+
+* El PR obliga a que alguien revise lo que hiciste antes de aceptarlo.
+
+* Sirve para evitar errores, código mal hecho o cosas raras.
+
+* También ayuda a que el equipo entienda qué cambios se están haciendo y puedan opinar.
+
+### ¿Cómo proteger el repositorio?
+
+Aunque uses PR, igual podrías hacer merge directo si no hay reglas por eso se configuran protecciones (como en GitHub), donde:
+
++ No puedes hacer merge sin aprobación
+
++ Se requieren revisiones
+
++ Se bloquea el push directo a ramas importantes
