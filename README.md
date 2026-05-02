@@ -3,6 +3,8 @@ Readme
 
 Mauricio Alail Cano Gutierrez
 
+![Imagen](images/images.png)
+
 ## Clase 1
 
 ### ¿Que es GIT?
